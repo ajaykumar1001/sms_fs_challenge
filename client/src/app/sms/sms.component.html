@@ -1,0 +1,44 @@
+<div>
+    Choose Start Date:
+    <mat-form-field>
+        <input matInput [matDatepicker]="start_date">
+        <mat-datepicker-toggle matSuffix [for]="start_date"></mat-datepicker-toggle>
+        <mat-datepicker #start_date></mat-datepicker>
+      </mat-form-field>
+
+      Choose End Date:
+      <mat-form-field>
+        <input matInput [matDatepicker]="end_date">
+        <mat-datepicker-toggle matSuffix [for]="end_date"></mat-datepicker-toggle>
+        <mat-datepicker #end_date></mat-datepicker>
+    </mat-form-field>
+      
+      <button class="mat-raised-button mat-primary" (click)="search(start_date,end_date)">Search</button>
+</div>
+
+<div>
+    <table width="100%" border="1">
+       <thead>
+          <tr>
+             <th (click) ="onClickField('id')">Id</th>
+             <th (click) ="onClickField('city')">City</th>
+             <th (click) ="onClickField('price')">Price</th>
+             <th (click) ="onClickField('status')">Status</th>
+             <th (click) ="onClickField('color')">Colour</th>
+             <th (click) ="onClickField('start_date')">Start Date</th>
+             <th (click) ="onClickField('end_date')">End Date</th>
+          </tr>
+       </thead>
+       <tbody>
+          <tr *ngFor="let item of itemsArray">
+             <th>{{ item.id }}</th>
+             <td>{{ item.city }}</td>
+             <td>{{ item.price }}</td>
+             <td>{{ item.status}}</td>
+             <td>{{ item.color }}</td>
+             <td>{{ item.start_date | date: 'dd/MM/yyyy' }}</td>
+             <td>{{ item.end_date | date: 'dd/MM/yyyy' }}</td>
+          </tr>
+       </tbody>
+    </table>
+ </div>
